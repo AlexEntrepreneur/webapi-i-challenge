@@ -41,7 +41,8 @@ server.post('/api/users', (req, res) => {
   if (validBodyProvided) {
     db.insert(req.body)
       .then(data => {
-        res.status(201).json(data);
+        db.find()
+          .then(data => res.status(201).json(data));
       })
       .catch(error => res.status(500).json({
         error: "There was an error while saving the user to the database"
