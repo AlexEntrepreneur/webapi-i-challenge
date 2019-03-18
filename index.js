@@ -1,8 +1,11 @@
 // implement your API here
 const express = require('express');
 const server = express();
-server.use(express.json());
 const db = require('./data/db.js');
+const cors = require('cors');
+
+server.use(express.json());
+server.use(cors());
 
 server.get('/', (req, res) => {
   res.send('Nothing to see here... try /api/');
